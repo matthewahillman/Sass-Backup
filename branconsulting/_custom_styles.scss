@@ -1,0 +1,110 @@
+@charset 'utf-8';
+html {
+    background: mix(black, $greyishblue, 20%);
+}
+body {
+    background: $sand;
+    font-family: $body-font;
+    color: $darkgrey;
+    @include fontsmooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font;
+    @include font-weight(bold);
+    color: $brown;
+}
+a {
+    color: $link;
+    @include text-decoration(none);
+    &:hover {
+        color: $hover;
+    }
+}
+header {
+    background: $sand;
+    border-bottom: 2px mix(white, $brown, 30%) dotted;
+    nav {
+        margin-top: 10px;
+    }
+}
+.nav-pills > li {
+    > a {
+        color: $brown;
+        &:hover {
+            background-color: mix(white, $brown, 20%);
+            color: white;
+        }
+    }
+    &.active > a {
+        background-color: $brown;
+        &:hover {
+            background-color: $brown;
+        }
+    }
+}
+.logo {
+    h1 {
+        margin: 10px 0 0 0;
+        line-height: 1;
+    }
+    h3 {
+        margin-top: 0;
+    }
+    img {
+        float: left;
+        margin: 10px 10px 0 0;
+    }
+    a {
+        &:hover {
+            @include text-decoration(none);
+        }
+    }
+}
+.center {
+    text-align: center;
+    float:none;
+    margin: 0 auto;
+}
+section{
+    margin: 50px 0 0 0;
+    padding: 0 0 12px 0;
+    background-color: $greyishblue;
+    p {
+        color: mix(white, $greyishblue, 60%);
+        @include font-weight(bold);
+    }
+    
+    h3 {
+        color: $sand;
+        margin-top: 11px;
+    }
+    span {
+        color: white;
+    }
+}
+.jumbotron {
+    background-color: $sand;
+    border-bottom: 2px mix(white, $brown, 30%) dotted;
+    h2 small {
+        color: $brown;
+    }
+}
+.thumbnail {
+    background: mix(black, $sand, 10%);
+    border: mix(black, $sand, 10%);
+}
+footer {
+        background: mix(black, $greyishblue, 10%);
+        p {
+            color: mix(white, $greyishblue, 60%);
+            padding-top:10px;
+        }
+        a {
+        color: mix(white, $greyishblue, 80%);
+        &:hover {
+            color: white;
+            @include font-weight(bold);
+        }
+    }
+}

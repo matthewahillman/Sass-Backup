@@ -1,0 +1,5 @@
+// Font Awesome 
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+
+// Google fonts - specify only the name of the font followed by a comma, import is handled via a mixin 
+@include webfont(Open Sans, Muli);
