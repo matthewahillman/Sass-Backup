@@ -1,0 +1,178 @@
+@use "sass:meta";
+/*
+*----------------------------------------------------------*
+Custom stylesheet
+Created: 08/2021
+Author: Matthew Hillman
+Built using Sass
+*/
+/* Theme Colours ERP */
+@mixin medals($args...) {
+  @debug meta.keywords($args);
+  @each $name, $color in meta.keywords($args) {
+    .table-#{$name} {
+      color: $color;
+    }
+    .border-#{$name} {
+      color: $color;
+    }
+    .list-unstyled > li {
+        color: $black;
+    }
+    .#{$name} {
+      color: $color;
+    }
+    .bg-#{$name} {
+      background: $color;
+      @if $name == bronze {
+        h4 {
+          color: $white;
+        }
+      }
+      @else {
+        h4 {
+        color: $black;
+        }
+      }
+    }
+  }
+}
+@mixin theme-colors($args...) {
+  @debug meta.keywords($args);
+  @each $name, $color in meta.keywords($args) {
+    .#{$name}bg {
+      background: $color;
+      &-lighten {
+        background: lighten($color, 10%);
+      }
+    }
+  }
+}
+@mixin pages($args...) {
+  @debug meta.keywords($args);
+  @each $name, $color in meta.keywords($args) {
+    .btn-outline-#{$name} {
+      color: $color;
+      border-color: $color;
+      &:hover {
+        background: $color;
+        color: $white;
+      }
+    }
+    .btn-#{$name} {
+      color: $color;
+      border-color: darken($color, 5%);
+      background: $white;
+      &:hover {
+        background: lighten($color, 5%);
+        color: $white;
+      }
+    }
+    .active {
+      &-#{$name} {
+        color: $white !important;
+        background: $color;
+        border-radius: 5px;
+        }
+    }
+    .a-#{$name} {
+      color: $color;
+      &:hover {
+        color: $color;
+        text-decoration: none;
+      }
+    }
+    ##{$name} > ul > li > .dropdown-item {
+        &:hover,
+        &:focus {
+          color: $white;
+          background: $color;
+        }
+    }
+  }
+}
+@mixin liquid($args...) {
+  @debug meta.keywords($args);
+  @each $name, $color in meta.keywords($args) {
+    .#{$name}-price {
+      background: $color;
+      color: $white;
+      p {
+        font-size: 40px;
+        line-height: 20px;
+        padding-top: 10px;
+      }
+    }
+  }
+}
+@mixin industries($args...) {
+  @debug meta.keywords($args);
+  @each $name, $image in meta.keywords($args) {
+    .#{$name} {
+      background: linear-gradient(to bottom, rgba($black, .5) 100%, rgba($black, .5) 100%), url("http://www.erpexperts.co.uk" + $image) no-repeat;
+      background-size: cover;
+
+      &-bottom {
+        @extend .#{$name};
+        background-position: bottom;
+      }
+      &-top {
+        @extend .#{$name};
+        background-position: top;
+      }
+      &-center {
+        @extend .#{$name};
+        background-position: center;
+      }
+    }
+  }
+}
+@include medals(
+  $bronze: $bronze,
+  $silver: $silver,
+  $gold: $gold,
+  $golden: $golden,
+  $platinum: $platinum,
+);
+@include theme-colors(
+  $yellow: $e3-yellow,
+  $yellowgreen: $e3-yellow-green,
+  $yellowgreen-2: $e3-yellow-green-2,
+  $lightgreen: $e3-light-green,
+  $mediumgreen: $e3-medium-green,
+  $tealgreen: $e3-teal-green,
+  $tealblue: $e3-teal-blue,
+  $lightblue: $e3-light-blue,
+  $mediumblue: $e3-medium-blue,
+  $darkblue: $e3-dark-blue,
+  $navy: $e3-navy,
+  $purple: $e3-purple,
+  $grape: $e3-grape,
+  $pink: $e3-pink,
+  $red: $e3-red,
+);
+@include pages(
+  $about: $e3-teal-green,
+  $services: $e3-medium-blue,
+  $apps: $e3-light-blue,
+  $netsuite: $e3-navy,
+  $blog: $e3-pink,
+  $contact: $e3-grape,
+  $support: $e3-purple,
+);
+@include liquid(
+  $cash: $e3-teal-blue,
+  $money: $e3-red,
+  $liquid: $e3-medium-green,
+);
+@include industries(
+  $manufactoring: $manufacturing,
+  $accountancy: $accountancy,
+  $finance: $finance,
+  $e-commerce: $e-commerce,
+  $smes: $smes,
+  $netsuite: $netsuite,
+  $development: $development,
+  $intergration: $intergration,
+  $training: $training,
+);
